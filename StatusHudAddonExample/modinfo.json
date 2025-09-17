@@ -1,0 +1,14 @@
+{
+  "type": "code",
+  "modid": "statushudaddonexample",
+  "name": "Status Hud Addon Example",
+  "authors": [
+    "Gravydigger"
+  ],
+  "description": "An example mod to show adding a new element to Status Hud.",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": "1.21.0",
+    "statushudcont": "4.0.0"
+  }
+}

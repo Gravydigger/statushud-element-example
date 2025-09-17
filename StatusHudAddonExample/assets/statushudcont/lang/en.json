@@ -1,0 +1,8 @@
+{
+  "example-name": "Example",
+  "example-desc": "An example element to show a proof of concept",
+  "example-opt-text": "Base",
+  "example-opt-tooltip": "Pick if the text should be zero based or one based.",
+  "example-opt-1": "Zero Based",
+  "example-opt-2": "One Based"
+}
