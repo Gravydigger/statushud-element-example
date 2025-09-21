@@ -4,13 +4,10 @@ using Vintagestory.API.MathTools;
 
 namespace StatusHudAddonExample;
 
-// Have a look at more examples at https://github.com/Gravydigger/statushud/tree/master/statushud/elements
+// More examples at https://github.com/Gravydigger/statushud/tree/master/statushud/elements
 public class StatusHudAddonExampleElement : StatusHudElement
 {
-    // Required.
-    public const string Name = "example"; // Required. Used internally translating the text.
-    private const string textKey = "shud-addon-example"; // Required. Used internally for setting changing the text.
-
+    public const string Name = "example"; // Required, must be public. Used internally translating the text.
     private readonly StatusHudAddonExampleRenderer renderer; // Required.
     private string numBase = "0base";
 
@@ -32,12 +29,6 @@ public class StatusHudAddonExampleElement : StatusHudElement
         return renderer;
     }
 
-    // Required.
-    public static string GetTextKey()
-    {
-        return textKey;
-    }
-
     // Optional. Remove if you don't want to set options.
     public override void ConfigOptions(string value)
     {
@@ -54,14 +45,14 @@ public class StatusHudAddonExampleElement : StatusHudElement
     // Use this to set the main logic of whatever you are wanting to display.
     public override void Tick()
     {
-        int item = system.capi.World.Player.InventoryManager.ActiveHotbarSlotNumber;
+       int slotNum = system.capi.World.Player.InventoryManager.ActiveHotbarSlotNumber;
 
         if (numBase == ElementOptionList[1])
         {
-            item++;
+            slotNum++;
         }
 
-        renderer.SetText(item.ToString());
+        renderer.SetText(slotNum.ToString());
     }
 
     // Required.
@@ -74,18 +65,12 @@ public class StatusHudAddonExampleElement : StatusHudElement
 
 public class StatusHudAddonExampleRenderer : StatusHudRenderer
 {
-    // Can remove if you are not referencing
-    private readonly StatusHudAddonExampleElement element;
+    private const string TextKey = "shud-addon-example"; // Required. Used internally for setting changing the text.
 
     public StatusHudAddonExampleRenderer(StatusHudSystem system, StatusHudAddonExampleElement element) : base(system)
     {
-        this.element = element;
         // Remove the Vec4f if you want to use the base font colour.
-        text = new StatusHudText(this.system.capi, StatusHudDateElement.GetTextKey(), system.Config, new Vec4f(0.85f, 0.44f, 0.15f, 1));
-     
-        // You can also use this if you want to set the color dynamically.
-        // Note that you will have to call Reload() if you want the change to apply.
-        // text.SetFontColour(new Vec4f(0.85f, 0.44f, 0.15f, 1));
+        text = new StatusHudText(this.system.capi, TextKey, system.Config, new Vec4f(0.85f, 0.44f, 0.15f, 1));
     }
 
     // Required.
