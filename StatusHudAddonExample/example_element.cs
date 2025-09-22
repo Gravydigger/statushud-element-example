@@ -20,7 +20,7 @@ public class StatusHudAddonExampleElement : StatusHudElement
     }
 
     public sealed override string[] ElementOptionList => ["0base", "1base"]; // Optional. Remove if you don't want to set options.
-    public override string ElementName => Name;
+    public override string ElementName => Name; // Required.
     public override string ElementOption => numBase; // Optional. Remove if you don't want to set options.
 
     // Required.
@@ -69,7 +69,7 @@ public class StatusHudAddonExampleRenderer : StatusHudRenderer
 
     public StatusHudAddonExampleRenderer(StatusHudSystem system, StatusHudAddonExampleElement element) : base(system)
     {
-        // Remove the Vec4f if you want to use the base font colour.
+        // Remove the Vec4f() if you want to use the base font colour.
         text = new StatusHudText(this.system.capi, TextKey, system.Config, new Vec4f(0.85f, 0.44f, 0.15f, 1));
     }
 
